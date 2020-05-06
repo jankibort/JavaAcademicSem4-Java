@@ -1,6 +1,7 @@
 package pl.jaz.jazapp;
 
 import javax.faces.application.ResourceHandler;
+import javax.inject.Inject;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -12,6 +13,9 @@ import java.io.IOException;
 @WebFilter("*")
 public class ExampleFilter extends HttpFilter {
 
+    @Inject
+    UserContext user;
+
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if (isUserAuthenticated() || isSiteAllowed(req) || isResourceReq(req)) {
@@ -22,7 +26,7 @@ public class ExampleFilter extends HttpFilter {
     }
 
     private boolean isUserAuthenticated() {
-        return false; //TODO
+        return user.isLogged();
     }
 
     private boolean isResourceReq(HttpServletRequest req) {

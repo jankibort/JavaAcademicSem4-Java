@@ -1,17 +1,29 @@
 package pl.jaz.jazapp.webapp.register;
 
+import pl.jaz.jazapp.UserMap;
 import pl.jaz.jazapp.webapp.login.LoginRequest;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @RequestScoped
 @Named
 public class RegisterController {
 
+    @Inject
+    UserMap users;
+
     public String register(RegisterRequest registerRequest) {
-        System.out.println(String.format("Tried to register with username %s and password %d", registerRequest.getUsername(), registerRequest.getPassword()));
-        // TODO code to register!
+
+        if (!registerRequest.getPassword().equals(registerRequest.getPasswordCheck())) {
+            return "/register.xhtml?faces-redirect=true";
+        }
+
+        if (users.tryRegister(registerRequest)) {
+            return "/register.xhtml?faces-redirect=true";
+        }
+
         return "/login.xhtml?faces-redirect=true";
     }
 }

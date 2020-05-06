@@ -15,21 +15,54 @@
 
 <h:body>
 
-    <h:form styleClass="form-base">
+    <h:form styleClass="form-base shadow">
         <div class="form-group">
             <h:inputText id="username" styleClass="form-control" a:placeholder="Username"
                          value="#{registerRequest.username}">
-            <f:validateLength minimum="3" maximum="8"/>
-            <f:validator validatorId="usernameValidator"/>
+                <f:validateLength minimum="3" maximum="25"/>
+                <f:validator validatorId="usernameValidator"/>
             </h:inputText>
             <h:messages for="username" styleClass="error-message"/>
         </div>
 
         <div class="form-group">
-            <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password" value="#{registerRequest.password}"/>
+            <h:inputText id="email" styleClass="form-control" a:placeholder="E-mail" value="#{registerRequest.email}"/>
         </div>
-        <h:commandButton styleClass="btn btn-primary" value="Sign up" action="#{registerController.register(registerRequest)}"/><br/>
 
+        <div class="form-group">
+            <h:inputText id="first-name" styleClass="form-control" a:placeholder="First name"
+                         value="#{registerRequest.firstName}"/>
+        </div>
+
+        <div class="form-group">
+            <h:inputText id="last-name" styleClass="form-control" a:placeholder="Last name"
+                         value="#{registerRequest.lastName}"/>
+        </div>
+
+        <div class="form-group">
+            <h:inputText id="birthdate" styleClass="form-control" a:placeholder="Birthdate"
+                         value="#{registerRequest.birthdate}"/>
+        </div>
+
+        <div class="form-group">
+            <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
+                           value="#{registerRequest.password}">
+                <f:validateLength minimum="3" maximum="25"/>
+            </h:inputSecret>
+            <h:messages for="password" styleClass="error-message"/>
+        </div>
+
+        <div class="form-group">
+            <h:inputSecret id="password-check" styleClass="form-control" a:placeholder="Repeat password"
+                           value="#{registerRequest.passwordCheck}"/>
+        </div>
+
+        <div class="d-flex justify-content-between">
+<!--            <h:commandButton styleClass="btn btn-danger" value="...Login"-->
+<!--                             action="#{registerController.register(registerRequest)}"/>-->
+<!--            <h:commandButton styleClass="btn btn-primary" value="Submit registration"-->
+<!--                             action="#{registerController.register(registerRequest)}"/>-->
+        </div>
     </h:form>
 
 </h:body>
