@@ -1,7 +1,6 @@
 package pl.jaz.jazapp.webapp.register;
 
 import pl.jaz.jazapp.UserMap;
-import pl.jaz.jazapp.webapp.login.LoginRequest;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

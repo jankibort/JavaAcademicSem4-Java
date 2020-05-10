@@ -12,7 +12,7 @@ import java.util.PropertyResourceBundle;
 @FacesValidator("usernameValidator")
 public class EmailValidator implements Validator<String> {
     private static final String ONLY_SMALL_LETTERS_MESSAGE_ID =
-            "pl.jaz.jazapp.app.webapp.extension.validator.UsernameValidator.ONLY_SMALL_LETTERS";
+            "pl.jaz.jazapp.webapp.extension.validator.UsernameValidator.ONLY_SMALL_LETTERS";
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
