@@ -7,7 +7,10 @@
 >
 <h:body>
 
-    <h3>Hello from INDEX!</h3>
+    <h3>Hi <h:outputText value="#{homeController.getUser().firstname} #{homeController.getUser().lastname}"/></h3>
+
+    <h:commandButton styleClass="btn btn-warning" value="Log out"
+                     action="#{homeController.logout()}"/>
 
 </h:body>
 </html>

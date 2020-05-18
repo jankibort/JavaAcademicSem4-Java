@@ -9,17 +9,17 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import java.util.PropertyResourceBundle;
 
-@FacesValidator("usernameValidator")
+@FacesValidator("emailValidator")
 public class EmailValidator implements Validator<String> {
-    private static final String ONLY_SMALL_LETTERS_MESSAGE_ID =
-            "pl.jaz.jazapp.webapp.extension.validator.UsernameValidator.ONLY_SMALL_LETTERS";
+    private static final String WRONG_EMAIL_VALIDATOR_MESSAGE =
+            "pl.jaz.jazapp.webapp.extension.validator.EmailValidator.WRONG_EMAIL_VALIDATOR_MESSAGE";
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
         if (!value.matches("[a-z]+")) {
             var msg = getMsg(context);
-            var onlySmallLettersMsg = msg.getString(ONLY_SMALL_LETTERS_MESSAGE_ID);
-            throw new ValidatorException(new FacesMessage(onlySmallLettersMsg));
+            var message = msg.getString(WRONG_EMAIL_VALIDATOR_MESSAGE);
+            throw new ValidatorException(new FacesMessage(message));
         }
     }
 

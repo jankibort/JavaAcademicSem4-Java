@@ -9,17 +9,26 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import java.util.PropertyResourceBundle;
 
-@FacesValidator("usernameValidator")
+@FacesValidator("nameValidator")
 public class NameValidator implements Validator<String> {
-    private static final String ONLY_SMALL_LETTERS_MESSAGE_ID =
-            "pl.jaz.jazapp.app.webapp.extension.validator.UsernameValidator.ONLY_SMALL_LETTERS";
+    private static final String FIRSTNAME_VALIDATOR =
+            "pl.jaz.jazapp.webapp.extension.validator.NameValidator.FIRSTNAME_VALIDATOR_MESSAGE";
+
+    private static final String LASTNAME_VALIDATOR =
+            "pl.jaz.jazapp.webapp.extension.validator.NameValidator.LASTNAME_VALIDATOR_MESSAGE";
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
-        if (!value.matches("[a-z]+")) {
+        if (!value.matches("[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+")) {
             var msg = getMsg(context);
-            var onlySmallLettersMsg = msg.getString(ONLY_SMALL_LETTERS_MESSAGE_ID);
-            throw new ValidatorException(new FacesMessage(onlySmallLettersMsg));
+            var message = "";
+            switch (component.getId()) {
+                case "first-name":
+                    message = msg.getString(FIRSTNAME_VALIDATOR);
+                case "last-name":
+                    message = msg.getString(LASTNAME_VALIDATOR);
+            }
+            throw new ValidatorException(new FacesMessage(message));
         }
     }
 
