@@ -16,7 +16,7 @@ public class PasswordValidator implements Validator<String> {
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
-        if (!value.matches("^(?=.*\\p{Ll})(?=.*[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\-\\+\\=0-9])(?=.*[\\p{Lu}])(?!.*\\s).{8,}$")) {
+        if (!value.matches("(?-i)(?=^.{3,}$)((?!.*\\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\\d){1,})|(?=(.*\\W){1,}))^.*$")) {
             var msg = getMsg(context);
             var message = msg.getString(WRONG_PASSWORD_VALIDATOR_MESSAGE);
             throw new ValidatorException(new FacesMessage(message));

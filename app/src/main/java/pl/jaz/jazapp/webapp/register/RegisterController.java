@@ -23,6 +23,8 @@ public class RegisterController {
         }
 
         if (users.tryRegister(registerRequest)) {
+            var flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+            flash.put("user-exists", "Username is already taken.");
             return "/register.xhtml?faces-redirect=true";
         }
 

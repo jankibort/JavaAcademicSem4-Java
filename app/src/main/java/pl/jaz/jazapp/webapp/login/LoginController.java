@@ -14,7 +14,6 @@ public class LoginController {
     UserMap users;
 
     public String login(LoginRequest loginRequest) {
-        System.out.println(String.format("Tried to login with username %s and password %s", loginRequest.getUsername(), loginRequest.getPassword()));
 
         if (!users.tryLogin(loginRequest)) {
             var flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();

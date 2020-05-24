@@ -5,12 +5,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+</h:head>
 <h:body>
-
+    <div class="form-base shadow">
     <h3>Hi <h:outputText value="#{homeController.getUser().firstname} #{homeController.getUser().lastname}"/></h3>
 
     <h:commandButton styleClass="btn btn-warning" value="Log out"
                      action="#{homeController.logout()}"/>
-
+    </div>
 </h:body>
 </html>

@@ -23,13 +23,14 @@
                 <f:validator validatorId="usernameValidator"/>
             </h:inputText>
             <h:messages for="username" styleClass="error-message"/>
+            <h:outputText styleClass="alert alert-danger" rendered="#{flash.containsKey('user-exists')}" value="#{flash['user-exists']}"/>
         </div>
 
         <div class="form-group">
             <h:inputText id="email" styleClass="form-control" a:placeholder="E-mail" value="#{registerRequest.email}">
                 <f:validator validatorId="emailValidator"/>
-                <h:messages for="email" styleClass="error-message"/>
             </h:inputText>
+            <h:messages for="email" styleClass="error-message"/>
         </div>
 
         <div class="form-group">
@@ -63,6 +64,7 @@
                 <f:validator validatorId="passwordValidator"/>
             </h:inputSecret>
             <h:messages for="password" styleClass="error-message"/>
+            <h:outputText styleClass="alert alert-danger" rendered="#{flash.containsKey('error-password')}" value="#{flash['error-password']}"/>
         </div>
 
         <div class="form-group">
@@ -71,10 +73,10 @@
         </div>
 
         <div class="d-flex justify-content-between">
-            <h:outputLink styleClass="btn btn-outline-primary font-weight-bold" data-toggle="tooltip"
-                          title="back to login site" value="login.xhtml">...Login</h:outputLink>
             <h:commandButton styleClass="btn btn-primary" value="Submit registration"
                              action="#{registerController.register(registerRequest)}"/>
+            <h:outputLink styleClass="btn btn-outline-primary font-weight-bold" data-toggle="tooltip"
+                          title="back to login site" value="login.xhtml">...Login</h:outputLink>
         </div>
     </h:form>
 
