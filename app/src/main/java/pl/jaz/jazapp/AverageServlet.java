@@ -20,7 +20,7 @@ public class AverageServlet extends HttpServlet {
         var writer = resp.getWriter();
 
         if (numbers == null || numbers.isEmpty()) {
-            writer.println("Please put parameters");
+            writer.println("Please put parameters.");
         } else {
             String[] myNumbers = numbers.split(",");
 
@@ -42,7 +42,7 @@ public class AverageServlet extends HttpServlet {
             DecimalFormat n = new DecimalFormat("0.##");
             n.setRoundingMode(RoundingMode.HALF_UP);
 
-            writer.println(n.format(average));
+            writer.println("Average equals: " + n.format(average));
         }
     }
 }
