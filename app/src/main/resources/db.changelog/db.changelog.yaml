@@ -1,8 +1,15 @@
-databaseChangelog:
+databaseChangeLog:
   - changeSet:
-      id: 20200509_init
-      author: Jan Kibort
-      sqlFile:
+     id: first
+     author: Jan Kibort
+     sqlFile:
         relativeToChangelogFile: true
         splitStatements: false
-        path: 20200509_init.sql
+        path: first.sql
+  - changeSet:
+     id: second
+     author: Jan Kibort
+     sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: second.sql

@@ -26,36 +26,6 @@
             <h:outputText styleClass="alert alert-danger" rendered="#{flash.containsKey('user-exists')}" value="#{flash['user-exists']}"/>
         </div>
 
-        <div class="form-group">
-            <h:inputText id="email" styleClass="form-control" a:placeholder="E-mail" value="#{registerRequest.email}">
-                <f:validator validatorId="emailValidator"/>
-            </h:inputText>
-            <h:messages for="email" styleClass="error-message"/>
-        </div>
-
-        <div class="form-group">
-            <h:inputText id="first-name" styleClass="form-control" a:placeholder="First name"
-                         value="#{registerRequest.firstName}">
-                <f:validator validatorId="nameValidator"/>
-            </h:inputText>
-            <h:messages for="first-name" styleClass="error-message"/>
-        </div>
-
-        <div class="form-group">
-            <h:inputText id="last-name" styleClass="form-control" a:placeholder="Last name"
-                         value="#{registerRequest.lastName}">
-                <f:validator validatorId="nameValidator"/>
-            </h:inputText>
-            <h:messages for="last-name" styleClass="error-message"/>
-        </div>
-
-        <div class="form-group">
-            <h:inputText id="birthdate" styleClass="form-control" a:placeholder="Birthdate"
-                         value="#{registerRequest.birthdate}">
-                <f:validator validatorId="birthdateValidator"/>
-            </h:inputText>
-            <h:messages for="birthdate" styleClass="error-message"/>
-        </div>
 
         <div class="form-group">
             <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
@@ -66,11 +36,11 @@
             <h:messages for="password" styleClass="error-message"/>
             <h:outputText styleClass="alert alert-danger" rendered="#{flash.containsKey('error-password')}" value="#{flash['error-password']}"/>
         </div>
-
         <div class="form-group">
             <h:inputSecret id="password-check" styleClass="form-control" a:placeholder="Repeat password"
                            value="#{registerRequest.passwordCheck}"/>
         </div>
+
 
         <div class="d-flex justify-content-between">
             <h:commandButton styleClass="btn btn-primary" value="Submit registration"
