@@ -16,8 +16,8 @@ public class HomeController {
         return user;
     }
 
-    public String logout() {
-        user.Logout();
-        return "/login.xhtml?faces-redirect=true";
-    }
+//    public String logout() {
+//        user.Logout();
+//        return "/login.xhtml?faces-redirect=true";
+//    }
 }

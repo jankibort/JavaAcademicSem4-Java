@@ -13,3 +13,17 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: second.sql
+  - changeSet:
+     id: third
+     author: Jan Kibort
+     sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: third.sql
+  - changeSet:
+     id: auction
+     author: Jan Kibort
+     sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: auction.sql

@@ -40,16 +40,16 @@ public class UserMap {
         return newUser;
     }
 
-    public boolean tryLogin(LoginRequest loginRequest) {
-        for (Map.Entry<String, List<String>> entry : allUsers.entrySet()) {
-            if (loginRequest.getUsername().equals(entry.getKey())) {
-                List<String> usernameValues = entry.getValue();
-                if (loginRequest.getPassword().equals(usernameValues.get(4))) {
-                    user.LogIn();
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    public boolean tryLogin(LoginRequest loginRequest) {
+//        for (Map.Entry<String, List<String>> entry : allUsers.entrySet()) {
+//            if (loginRequest.getUsername().equals(entry.getKey())) {
+//                List<String> usernameValues = entry.getValue();
+//                if (loginRequest.getPassword().equals(usernameValues.get(4))) {
+//                    user.LogIn();
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 }

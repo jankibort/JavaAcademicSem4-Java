@@ -24,13 +24,12 @@ public class LoginServlet extends HttpServlet {
         resp.setStatus(200);
         resp.setContentType("text/plain");
         writer.println(String.format("I am logged: %s", userContext.isLogged()));
-        userContext.LogIn();
+//        userContext.();
     }
 }
 
 
-
-/*        var numbers = req.getParameter("numbers");
+      /*  var numbers = req.getParameter("numbers");
 
 
         var mySessionId = Arrays.stream(req.getCookies() != null ? req.getCookies() : new Cookie[]{})
