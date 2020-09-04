@@ -28,7 +28,7 @@ public class AuctionCreatorService {
         auctionEntity.setPrice(auctionRequest.getPrice());
         auctionEntity.setCategoryId(auctionRequest.getCategory_id());
         auctionEntity.setOwnerId(userSearchService.getByUsername(userContext.getUsername()).get());
-        auctionEntity.setVersion(auctionRequest.getVersion());
+        auctionEntity.setVersion(1);
 
         em.persist(auctionEntity);
     }

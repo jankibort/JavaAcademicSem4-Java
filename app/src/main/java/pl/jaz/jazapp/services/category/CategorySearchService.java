@@ -2,11 +2,15 @@ package pl.jaz.jazapp.services.category;
 
 import pl.jaz.jazapp.pojo.CategoryEntity;
 
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
+@Model
 public class CategorySearchService {
     @PersistenceContext
     private EntityManager em;
@@ -20,10 +24,7 @@ public class CategorySearchService {
     }
 
     @Transactional
-    public Optional<CategoryEntity> findCategories(String department_id) {
-        return em.createQuery("from CategoryEntity where departmentId = :department_id", CategoryEntity.class)
-                .setParameter("department_id", department_id)
-                .getResultList().stream()
-                .findFirst();
+    public List<CategoryEntity> getAllCategories() {
+     return em.createQuery("FROM CategoryEntity", CategoryEntity.class).getResultList();
     }
 }

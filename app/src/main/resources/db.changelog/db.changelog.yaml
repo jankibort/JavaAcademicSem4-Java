@@ -28,9 +28,23 @@ databaseChangeLog:
         splitStatements: false
         path: auction.sql
   - changeSet:
-       id: user_role
-       author: Jan Kibort
-       sqlFile:
-          relativeToChangelogFile: true
-          splitStatements: false
-          path: user_role.sql
+     id: user_role
+     author: Jan Kibort
+     sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: user_role.sql
+  - changeSet:
+     id: default_role
+     author: Jan Kibort
+     sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: default_role.sql
+  - changeSet:
+     id: addAdmin
+     author: Jan Kibort
+     sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: addAdmin.sql
