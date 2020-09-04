@@ -26,7 +26,8 @@
         <h:outputLink styleClass="btn d-block btn-sm btn-secondary font-weight-bold shadow-lg"
                       value="/">Wszystkie Aukcje</h:outputLink>
 
-        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold" value="auctions/mine.xhtml">Moje Aukcje</h:outputLink>
+        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
+                      value="auctions/mine.xhtml">Moje Aukcje</h:outputLink>
 
         <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
                       value="mine.xhtml">Edycja Kategorii</h:outputLink>
@@ -42,7 +43,7 @@
         <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="Title"
                      value="#{auctionRequest.title}"/>
         <h:inputTextarea id="description" row="3" styleClass="form-control d-block py-2" a:placeholder="Description"
-                     value="#{auctionRequest.description}"/>
+                         value="#{auctionRequest.description}"/>
         <h:inputText id="price" styleClass="form-control d-block my-2" a:placeholder="Price"
                      value="#{auctionRequest.price}"/>
         <h:inputText id="photo-link-1" styleClass="form-control d-block my-2" a:placeholder="Url of image"
@@ -58,7 +59,8 @@
         <h:inputText id="param3-name" styleClass="form-control d-block my-2" a:placeholder="When purchased?"
                      value="#{auctionRequest.param3}"/>
         <h:selectOneMenu id="category" styleClass="form-control d-block my-2" value="#{auctionRequest.category_id}">
-            <f:selectItems value="#{categoryController.getAllCategories()}"/>
+            <f:selectItems value="#{categoryController.getAllCategories()}" var="category" itemValue="#{category.categoryId}"
+                           itemLabel="#{category.categoryName}"/>
         </h:selectOneMenu>
 
         <h:commandButton styleClass="btn d-block btn-sm btn-warning font-weight-bold shadow-lg py-2" value="Add Listing"

@@ -1,5 +1,7 @@
 package pl.jaz.jazapp;
 
+import pl.jaz.jazapp.pojo.UserEntity;
+
 import javax.faces.application.ResourceHandler;
 import javax.inject.Inject;
 import javax.servlet.FilterChain;
@@ -42,5 +44,7 @@ public class ExampleFilter extends HttpFilter {
         return false;
     }
 
-
+    private boolean isUserAnAdmin() {
+        return userContext.getRole().equals("ADMIN");
+    }
 }

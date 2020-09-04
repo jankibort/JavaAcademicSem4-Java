@@ -31,6 +31,7 @@ public class LoginController {
             userContext.setId(user.get().getId());
             userContext.setUsername(user.get().getUsername());
             userContext.setPassword(user.get().getPassword());
+            userContext.setRole(user.get().getRole());
             userContext.setLogged(true);
             return "/index.xhtml?faces-redirect=true";
         }

@@ -17,6 +17,15 @@ public class UserEntity {
 
     private String password;
 
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JoinColumn(name="")
 //    private List<Auction> auctionList = new ArrayList<>();
