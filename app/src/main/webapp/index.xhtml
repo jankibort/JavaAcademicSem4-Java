@@ -10,11 +10,28 @@
     <h:outputStylesheet name="bootstrap.min.css" library="css"/>
 </h:head>
 <h:body>
-    <div class="form-base shadow">
-    <h3>Hi <h:outputText value="#{homeController.getUser().firstname} #{homeController.getUser().lastname}"/></h3>
 
-    <h:commandButton styleClass="btn btn-warning" value="Log out"
-                     action="#{homeController.logout()}"/>
-    </div>
+    <h:form class="greeny d-flex justify-content-between pb-3">
+        <h:outputText class="h5 mb-0 pr-2 text-light bg-dark d-block shadow-lg"
+                      value="Logged as: #{homeController.getUser().getUsername()}"/>
+
+        <h:commandButton styleClass="btn d-block btn-sm btn-secondary font-weight-bold shadow-lg" value="Dodaj Aukcję"
+                         action="#{auctionController.goToCreateAuction()}"/>
+
+        <h:outputLink styleClass="btn d-block btn-sm btn-secondary font-weight-bold shadow-lg"
+                      value="/">Wszystkie Aukcje</h:outputLink>
+
+        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold" value="auctions/mine.xhtml">Moje Aukcje</h:outputLink>
+
+        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
+                      value="mine.xhtml">Edycja Kategorii</h:outputLink>
+
+        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
+                      value="mine.xhtml">Edycja Działów</h:outputLink>
+
+        <h:commandButton styleClass="btn d-block btn-sm btn-danger font-weight-bold shadow-lg" value="Logout"
+                         action="#{homeController.logout()}"/>
+    </h:form>
+
 </h:body>
 </html>

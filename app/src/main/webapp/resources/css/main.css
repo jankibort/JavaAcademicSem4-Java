@@ -1,3 +1,16 @@
+form, div {
+    background-color: #ffffff;
+}
+
+body {
+    padding: 20px 30px;
+    background-color: #c3e6cb !important;
+}
+
+.greeny {
+    background-color: #c3e6cb !important;
+}
+
 .form-base {
     width: 100%;
     max-width: 360px;

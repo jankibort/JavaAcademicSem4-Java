@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "auction")
-public class Auction {
+public class AuctionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
@@ -20,15 +20,15 @@ public class Auction {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="category_id")
-    private Category categoryId;
+    private CategoryEntity categoryId;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="owner_id")
     private UserEntity ownerId;
 
-    public int getAuctionId() {
-        return auctionId;
-    }
+
+
+    public int getAuctionId() { return auctionId; }
 
     public void setAuctionId(int auctionId) {
         this.auctionId = auctionId;
@@ -66,11 +66,11 @@ public class Auction {
         this.version = version;
     }
 
-    public Category getCategoryId() {
+    public CategoryEntity getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Category categoryId) {
+    public void setCategoryId(CategoryEntity categoryId) {
         this.categoryId = categoryId;
     }
 

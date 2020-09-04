@@ -27,3 +27,10 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: auction.sql
+  - changeSet:
+       id: user_role
+       author: Jan Kibort
+       sqlFile:
+          relativeToChangelogFile: true
+          splitStatements: false
+          path: user_role.sql

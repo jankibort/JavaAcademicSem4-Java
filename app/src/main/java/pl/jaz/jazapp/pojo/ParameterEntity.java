@@ -1,17 +1,7 @@
 package pl.jaz.jazapp.pojo;
 
-
-import javax.persistence.*;
-
-@Entity
-@Table(name="department")
-public class Department {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private int id; //klucz glowny - id
-
-    @Column(name="name")
+public class ParameterEntity {
+    private int id;
     private String name;
 
     public int getId() {

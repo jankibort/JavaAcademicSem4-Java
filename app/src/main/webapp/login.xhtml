@@ -13,9 +13,9 @@
 
 <h:body>
 
-    <h:form styleClass="form-base shadow">
+    <h:form styleClass="form-base shadow-lg">
         <div class="form-group">
-            <h:outputText styleClass="alert alert-danger" rendered="#{flash.containsKey('error-message')}"
+            <h:outputText styleClass="alert d-block alert-danger" rendered="#{flash.containsKey('error-message')}"
                           value="#{flash['error-message']}"/>
         </div>
         <div class="form-group">

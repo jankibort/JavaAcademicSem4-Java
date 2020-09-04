@@ -1,13 +1,10 @@
 package pl.jaz.jazapp.pojo;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Entity
 @Table(name="category")
-public class Category {
+public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,9 +14,9 @@ public class Category {
     @Column(name="name")
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="dapertment_id")
-    private List<Department> departmentId = new ArrayList<>();
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="department_id")
+    private DepartmentEntity departmentId;
 
     public int getCategoryId() {
         return categoryId;
@@ -37,11 +34,12 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public List<Department> getDepartmentId() {
+    public DepartmentEntity getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(List<Department> departmentId) {
+    public void setDepartmentId(DepartmentEntity departmentId) {
         this.departmentId = departmentId;
     }
 }
+

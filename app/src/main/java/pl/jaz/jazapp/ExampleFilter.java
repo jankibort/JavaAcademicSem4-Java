@@ -14,7 +14,7 @@ import java.io.IOException;
 public class ExampleFilter extends HttpFilter {
 
     @Inject
-    UserContext user;
+    UserContext userContext;
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -26,7 +26,7 @@ public class ExampleFilter extends HttpFilter {
     }
 
     private boolean isUserAuthenticated() {
-        return user.isLogged();
+        return userContext.isLogged();
     }
 
     private boolean isResourceReq(HttpServletRequest req) {

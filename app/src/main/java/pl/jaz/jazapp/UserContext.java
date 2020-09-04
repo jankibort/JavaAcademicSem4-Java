@@ -12,29 +12,21 @@ public class UserContext implements Serializable {
 
     private String username;
     private String password;
+    private int id;
 
-    public String getUsername() {
-        return username;
-    }
+    public int getId() { return id; }
 
+    public void setId(int id) { this.id = id; }
 
-    public boolean isLogged() {
-        return isLogged;
-    }
+    public String getUsername() { return username; }
 
-    public void setLogged(boolean logged) {
-        isLogged = logged;
-    }
+    public boolean isLogged() { return isLogged; }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setLogged(boolean logged) { isLogged = logged; }
 
-    public String getPassword() {
-        return password;
-    }
+    public void setUsername(String username) { this.username = username; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 }

@@ -1,7 +1,17 @@
 package pl.jaz.jazapp.pojo;
 
-public class Parameter {
-    private int id;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="department")
+public class DepartmentEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    private int id; //klucz glowny - id
+
+    @Column(name="name")
     private String name;
 
     public int getId() {

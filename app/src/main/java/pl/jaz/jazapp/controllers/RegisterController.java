@@ -1,6 +1,7 @@
-package pl.jaz.jazapp.webapp.register;
+package pl.jaz.jazapp.controllers;
 
-import pl.jaz.jazapp.users.UserCreatorService;
+import pl.jaz.jazapp.requests.RegisterRequest;
+import pl.jaz.jazapp.services.user.UserCreatorService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;

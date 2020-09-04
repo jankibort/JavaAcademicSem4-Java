@@ -1,9 +1,9 @@
 package pl.jaz.jazapp.pojo;
 
-public class Photo {
+public class PhotoEntity {
     private int id;
     private String url;
-    private Auction auctionId;
+    private AuctionEntity auctionId;
 
     public int getId() {
         return id;
@@ -21,11 +21,11 @@ public class Photo {
         this.url = url;
     }
 
-    public Auction getAuctionId() {
+    public AuctionEntity getAuctionId() {
         return auctionId;
     }
 
-    public void setAuctionId(Auction auctionId) {
+    public void setAuctionId(AuctionEntity auctionId) {
         this.auctionId = auctionId;
     }
 }

@@ -1,24 +1,24 @@
-package pl.jaz.jazapp.users;
+package pl.jaz.jazapp.services.auction;
 
-
+import pl.jaz.jazapp.pojo.AuctionEntity;
 import pl.jaz.jazapp.pojo.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
+
 @ApplicationScoped
-public class UserSearchService {
+public class AuctionSearchService {
     @PersistenceContext
     private EntityManager em;
 
     @Transactional
-    public Optional<UserEntity> findUser(String username, String password) {
-        return em.createQuery("from UserEntity where username = :username AND password = :password", UserEntity.class)
-                .setParameter("username", username).setParameter("password", password)
+    public Optional<AuctionEntity> findAuction(int id) {
+        return em.createQuery("from AuctionEntity where id = :id", AuctionEntity.class)
+                .setParameter("id", id)
                 .getResultList().stream()
                 .findFirst();
     }

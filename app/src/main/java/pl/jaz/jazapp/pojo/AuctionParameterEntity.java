@@ -1,23 +1,23 @@
 package pl.jaz.jazapp.pojo;
 
-public class AuctionParameter {
-    private Auction auctionId;
-    private Parameter parameterId;
+public class AuctionParameterEntity {
+    private AuctionEntity auctionId;
+    private ParameterEntity parameterId;
     private String value;
 
-    public Auction getAuctionId() {
+    public AuctionEntity getAuctionId() {
         return auctionId;
     }
 
-    public void setAuctionId(Auction auctionId) {
+    public void setAuctionId(AuctionEntity auctionId) {
         this.auctionId = auctionId;
     }
 
-    public Parameter getParameterId() {
+    public ParameterEntity getParameterId() {
         return parameterId;
     }
 
-    public void setParameterId(Parameter parameterId) {
+    public void setParameterId(ParameterEntity parameterId) {
         this.parameterId = parameterId;
     }
 

@@ -1,4 +1,4 @@
-package pl.jaz.jazapp.users;
+package pl.jaz.jazapp.services.user;
 
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
