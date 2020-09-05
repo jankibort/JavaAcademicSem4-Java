@@ -3,6 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 >
@@ -33,16 +35,16 @@
                   value="#{departmentController.goToDepartments()}">Departments</h:outputLink>
     <br/><br/>
 
-    <ui:repeat value="#{auctionController.getAllAuctions()}" var="auction">
-        <h:form class="greeny">
-            <h:outputText class="h5 mb-0 pr-2 text-secondary"
-                          value="#{auction.categoryName}"/>
-            <c:if test="#{exampleFilter.getIsUserAnAdmin()}">
-                <h:outputLink styleClass="btn btn-sm btn-outline-warning shadow-lg"
-                              value="#{categoryController.edit(cat.categoryId)}">edit</h:outputLink>
-            </c:if>
-        </h:form>
-    </ui:repeat>
-
+    <h:form style="width: 50%; margin: auto;" class="greeny m-2">
+        <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="category name"
+                     value="#{categoryRequest.name}"/>
+        <h:selectOneMenu id="category" styleClass="form-control d-block my-2" value="#{auctionRequest.category_id}">
+            <f:selectItems value="#{departmentController.getAllDepartments()}" var="dep"
+                           itemValue="#{dep.departmentId}"
+                           itemLabel="#{dep.name}"/>
+        </h:selectOneMenu>
+        <h:commandButton styleClass="btn d-block btn-sm btn-outline-primary font-weight-bold shadow-lg" value="Save"
+                         action="#{categoryController.save(departmentRequest)}"/>
+    </h:form>
 </h:body>
 </html>

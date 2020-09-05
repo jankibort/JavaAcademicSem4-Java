@@ -1,12 +1,14 @@
 package pl.jaz.jazapp.services.auction;
 
 import pl.jaz.jazapp.pojo.AuctionEntity;
+import pl.jaz.jazapp.pojo.CategoryEntity;
 import pl.jaz.jazapp.pojo.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -21,5 +23,9 @@ public class AuctionSearchService {
                 .setParameter("id", id)
                 .getResultList().stream()
                 .findFirst();
+    }
+
+    public List<AuctionEntity> getAllAuctions() {
+        return em.createQuery("FROM AuctionEntity ", AuctionEntity.class).getResultList();
     }
 }

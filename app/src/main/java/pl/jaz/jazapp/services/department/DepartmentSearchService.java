@@ -1,12 +1,16 @@
 package pl.jaz.jazapp.services.department;
 
+import pl.jaz.jazapp.pojo.CategoryEntity;
 import pl.jaz.jazapp.pojo.DepartmentEntity;
 
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
+@Model
 public class DepartmentSearchService {
     @PersistenceContext
     private EntityManager em;
@@ -17,5 +21,10 @@ public class DepartmentSearchService {
                 .setParameter("name", name)
                 .getResultList().stream()
                 .findFirst();
+    }
+
+    @Transactional
+    public List<DepartmentEntity> getAllDepartments() {
+        return em.createQuery("FROM DepartmentEntity ", DepartmentEntity.class).getResultList();
     }
 }

@@ -6,6 +6,7 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 >
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
@@ -13,57 +14,53 @@
 </h:head>
 <h:body>
 
+    <div class="d-flex justify-content-between greeny">
+    <h:outputText class="h5 mb-0 pr-2 text-success d-block m-2"
+                  value="Logged as: #{homeController.getUser().getUsername()}"/>
     <h:form class="greeny d-flex justify-content-between pb-4">
-        <h:outputText class="h5 mb-0 pr-2 text-light bg-dark d-block shadow-lg"
-                      value="Logged as: #{homeController.getUser().getUsername()}"/>
-
-        <h:commandButton styleClass="btn d-block btn-sm btn-success shadow-lg" value="Dodaj Aukcję"
-                         action="#{auctionController.goToCreateAuction()}"/>
-
-        <h:commandButton styleClass="btn d-block btn-sm btn-secondary shadow-lg" value="Lista Aukcji"
-                         action="#{auctionController.goToCreateAuction()}"/>
-
-        <h:outputLink styleClass="btn d-block btn-sm btn-secondary font-weight-bold shadow-lg"
-                      value="/">Wszystkie Aukcje</h:outputLink>
-
-        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
-                      value="auctions/mine.xhtml">Moje Aukcje</h:outputLink>
-
-        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
-                      value="mine.xhtml">Edycja Kategorii</h:outputLink>
-
-        <h:outputLink styleClass="btn d-block btn-sm btn-secondary shadow-lg font-weight-bold"
-                      value="mine.xhtml">Edycja Działów</h:outputLink>
 
         <h:commandButton styleClass="btn d-block btn-sm btn-danger font-weight-bold shadow-lg" value="Logout"
                          action="#{homeController.logout()}"/>
     </h:form>
+    </div>
+    <h:outputLink styleClass="btn btn-outline-success shadow-lg m-2"
+                  value="#{auctionController.goToCreateAuction()}">New listing</h:outputLink>
+    <h:outputLink styleClass="btn btn-outline-success shadow-lg m-2"
+                  value="#{auctionController.goToAuctionList()}">All Auctions</h:outputLink>
+    <h:outputLink styleClass="btn btn-outline-success shadow-lg m-2"
+                  value="#{auctionController.goToMyListing()}">My listing</h:outputLink>
+    <h:outputLink styleClass="btn btn-outline-success shadow-lg m-2"
+                  value="#{categoryController.goToCategories()}">Categories</h:outputLink>
+    <h:outputLink styleClass="btn btn-outline-success shadow-lg m-2"
+                  value="#{departmentController.goToDepartments()}">Departments</h:outputLink>
 
+    <br/><br/>
     <h:form style="width: 50%; margin: auto;" class="greeny">
-        <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="Title"
+        <h:inputText id="title" required="true" styleClass="form-control d-block m-2" a:placeholder="Title"
                      value="#{auctionRequest.title}"/>
-        <h:inputTextarea id="description" row="3" styleClass="form-control d-block py-2" a:placeholder="Description"
+        <h:inputTextarea id="description" required="true" row="3" styleClass="m-2 form-control d-block py-2" a:placeholder="Description"
                          value="#{auctionRequest.description}"/>
-        <h:inputText id="price" styleClass="form-control d-block my-2" a:placeholder="Price"
+        <h:inputText id="price" required="true" styleClass="form-control d-block m-2" a:placeholder="Price"
                      value="#{auctionRequest.price}"/>
-        <h:inputText id="photo-link-1" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+        <h:inputText id="photo-link-1" styleClass="form-control d-block m-2" a:placeholder="Url of image"
                      value="#{auctionRequest.image1}"/>
-        <h:inputText id="photo-link-2" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+        <h:inputText id="photo-link-2" styleClass="form-control d-block m-2" a:placeholder="Url of image"
                      value="#{auctionRequest.image2}"/>
-        <h:inputText id="photo-link-3" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+        <h:inputText id="photo-link-3" styleClass="form-control d-block m-2" a:placeholder="Url of image"
                      value="#{auctionRequest.image3}"/>
-        <h:inputText id="param1-name" styleClass="form-control d-block my-2" a:placeholder="Was used?"
+        <h:inputText id="param1-name" required="true" styleClass="form-control d-block m-2" a:placeholder="Was used?"
                      value="#{auctionRequest.param1}"/>
-        <h:inputText id="param2-name" styleClass="form-control d-block my-2" a:placeholder="Condition of item?"
+        <h:inputText id="param2-name" required="true" styleClass="form-control d-block m-2" a:placeholder="Condition of item?"
                      value="#{auctionRequest.param2}"/>
-        <h:inputText id="param3-name" styleClass="form-control d-block my-2" a:placeholder="When purchased?"
+        <h:inputText id="param3-name" required="true" styleClass="form-control d-block m-2" a:placeholder="When purchased?"
                      value="#{auctionRequest.param3}"/>
-        <h:selectOneMenu id="category" styleClass="form-control d-block my-2" value="#{auctionRequest.category_id}">
-            <f:selectItems value="#{categoryController.getAllCategories()}" var="category" itemValue="#{category.categoryId}"
+        <h:selectOneMenu id="category" required="true" styleClass="form-control d-block m-2" value="#{auctionRequest.category_id}">
+            <f:selectItems value="#{categoryController.getAllCategories()}" var="category"
+                           itemValue="#{category.categoryId}"
                            itemLabel="#{category.categoryName}"/>
         </h:selectOneMenu>
 
-        <h:commandButton styleClass="btn d-block btn-sm btn-warning font-weight-bold shadow-lg py-2" value="Add Listing"
+        <h:commandButton styleClass="btn d-block btn-sm btn-warning m-2 font-weight-bold shadow-lg py-2" value="Add Listing"
                          action="#{auctionController.createAuction(auctionRequest)}"/>
     </h:form>
 

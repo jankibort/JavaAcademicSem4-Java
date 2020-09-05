@@ -9,17 +9,17 @@ public class DepartmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private int id; //klucz glowny - id
+    private int departmentId; //klucz glowny - id
 
     @Column(name="name")
     private String name;
 
-    public int getId() {
-        return id;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getName() {

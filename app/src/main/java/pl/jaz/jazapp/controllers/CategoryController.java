@@ -1,6 +1,7 @@
 package pl.jaz.jazapp.controllers;
 
 import pl.jaz.jazapp.pojo.CategoryEntity;
+import pl.jaz.jazapp.requests.CategoryRequest;
 import pl.jaz.jazapp.services.category.CategoryCreatorService;
 import pl.jaz.jazapp.services.category.CategorySearchService;
 
@@ -17,8 +18,22 @@ public class CategoryController {
     @Inject
     CategorySearchService categorySearch;
 
-        public List<CategoryEntity> getAllCategories() {
+    public List<CategoryEntity> getAllCategories() {
         return categorySearch.getAllCategories();
     }
 
+    public String save(CategoryRequest categoryRequest) {
+        categoryCreator.createCategory(categoryRequest);
+        return "/app/categories/list.xhtml";
+    }
+
+    public String add() { return "/app/categories/edit.xhtml"; }
+
+    public String edit(int id) {
+        return "/app/categories/edit.xhtml?departmentId=" + id + "&faces-redirect-true";
+    }
+
+    public String goToCategories() {
+        return "/app/categories/list.xhtml";
+    }
 }

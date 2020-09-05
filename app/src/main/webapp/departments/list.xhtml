@@ -3,6 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 >
@@ -33,13 +35,18 @@
                   value="#{departmentController.goToDepartments()}">Departments</h:outputLink>
     <br/><br/>
 
-    <ui:repeat value="#{auctionController.getAllAuctions()}" var="auction">
+    <c:if test="#{exampleFilter.getIsUserAnAdmin()}">
+        <h:outputLink styleClass="btn btn-outline-warning shadow-lg m-2"
+                      value="#{departmentController.add()}">Add new department</h:outputLink>
+    </c:if>
+
+    <ui:repeat value="#{departmentController.getAllDepartments()}" var="dep">
         <h:form class="greeny">
             <h:outputText class="h5 mb-0 pr-2 text-secondary"
-                          value="#{auction.categoryName}"/>
+                          value="#{dep.name}"/>
             <c:if test="#{exampleFilter.getIsUserAnAdmin()}">
                 <h:outputLink styleClass="btn btn-sm btn-outline-warning shadow-lg"
-                              value="#{categoryController.edit(cat.categoryId)}">edit</h:outputLink>
+                              value="#{departmentController.edit(dep.departmentId)}">edit</h:outputLink>
             </c:if>
         </h:form>
     </ui:repeat>

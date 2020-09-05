@@ -3,6 +3,7 @@ package pl.jaz.jazapp.services.category;
 import pl.jaz.jazapp.pojo.CategoryEntity;
 import pl.jaz.jazapp.pojo.DepartmentEntity;
 import pl.jaz.jazapp.requests.AuctionRequest;
+import pl.jaz.jazapp.requests.CategoryRequest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -18,11 +19,10 @@ public class CategoryCreatorService {
     AuctionRequest auctionRequest;
 
     @Transactional
-    public void createCategory(String name, DepartmentEntity department_id) {
+    public void createCategory(CategoryRequest categoryRequest) {
         var categoryEntity = new CategoryEntity();
-        categoryEntity.setCategoryName(name);
-        categoryEntity.setDepartmentId(department_id);
-
+        categoryEntity.setCategoryName(categoryRequest.getName());
+        categoryEntity.setDepartmentId(categoryRequest.getDepartmentId());
 
         em.persist(categoryEntity);
     }

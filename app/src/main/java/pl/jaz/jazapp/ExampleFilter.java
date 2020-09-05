@@ -4,6 +4,7 @@ import pl.jaz.jazapp.pojo.UserEntity;
 
 import javax.faces.application.ResourceHandler;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter("*")
+@Named
 public class ExampleFilter extends HttpFilter {
 
     @Inject
@@ -44,7 +46,8 @@ public class ExampleFilter extends HttpFilter {
         return false;
     }
 
-    private boolean isUserAnAdmin() {
+
+    public boolean getIsUserAnAdmin() {
         return userContext.getRole().equals("ADMIN");
     }
 }
