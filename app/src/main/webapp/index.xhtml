@@ -5,6 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f = "http://java.sun.com/jsf/core">
 >
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
@@ -33,16 +34,35 @@
                   value="#{departmentController.goToDepartments()}">Departments</h:outputLink>
     <br/><br/>
 
-    <ui:repeat value="#{auctionController.getAllAuctions()}" var="auction">
-        <h:form class="greeny">
-            <h:outputText class="h5 mb-0 pr-2 text-secondary"
-                          value="#{auction.categoryName}"/>
-            <c:if test="#{exampleFilter.getIsUserAnAdmin()}">
-                <h:outputLink styleClass="btn btn-sm btn-outline-warning shadow-lg"
-                              value="#{categoryController.edit(cat.categoryId)}">edit</h:outputLink>
-            </c:if>
-        </h:form>
-    </ui:repeat>
+    <h:dataTable>
+<!--    <ui:repeat value="#{auctionController.getAllAuctions()}" var="auction">-->
+<!--        <h:form class="greeny">-->
+<!--            <h:outputText class="h5 mb-0 pr-2 text-secondary"-->
+<!--                          value="#{auction.auctionId}"/>-->
+<!--            <c:if test="#{exampleFilter.getIsUserAnAdmin()}">-->
+<!--                <h:outputLink styleClass="btn btn-sm btn-outline-warning shadow-lg"-->
+<!--                              value="#{categoryController.edit(cat.categoryId)}">edit</h:outputLink>-->
+<!--            </c:if>-->
+<!--        </h:form>-->
+<!--    </ui:repeat>-->
+        <h:column>
+            <f:facet name = "header">Photo</f:facet>
+            #{auctionController.getAllAuctions().image1}
+        </h:column>
+        <h:column>
+            <f:facet name = "header">Id</f:facet>
+            #{auctionController.getAllAuctions().auctionId}
+        </h:column>
+        <h:column>
+            <f:facet name = "header">Title</f:facet>
+            #{auctionController.getAllAuctions().title}
+        </h:column>
+        <h:column>
+            <f:facet name = "header">Description</f:facet>
+            #{auctionController.getPhotos()}
+        </h:column>
+
+    </h:dataTable>
 
 </h:body>
 </html>

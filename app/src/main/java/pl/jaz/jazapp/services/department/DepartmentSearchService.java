@@ -24,6 +24,14 @@ public class DepartmentSearchService {
     }
 
     @Transactional
+    public Optional<DepartmentEntity> findDepartmentById(String id) {
+        return em.createQuery("from DepartmentEntity where id = :id", DepartmentEntity.class)
+                .setParameter("id", id)
+                .getResultList().stream()
+                .findFirst();
+    }
+
+    @Transactional
     public List<DepartmentEntity> getAllDepartments() {
         return em.createQuery("FROM DepartmentEntity ", DepartmentEntity.class).getResultList();
     }

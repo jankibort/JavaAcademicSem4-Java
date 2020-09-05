@@ -9,7 +9,11 @@ import pl.jaz.jazapp.services.department.DepartmentSearchService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Named
 @ApplicationScoped
@@ -18,6 +22,11 @@ public class DepartmentController {
     DepartmentCreatorService departmentCreator;
     @Inject
     DepartmentSearchService departmentSearch;
+
+    protected Optional<DepartmentEntity> getDepartmentById(HttpServletRequest req) throws IOException {
+        var departmentId = req.getParameter("departmentId");
+        return departmentSearch.findDepartmentById(departmentId);
+    }
 
     public String goToDepartments() {
         return "/app/departments/list.xhtml";

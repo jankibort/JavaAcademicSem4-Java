@@ -1,8 +1,18 @@
 package pl.jaz.jazapp.pojo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="photo")
 public class PhotoEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String url;
+
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="auction_id")
     private AuctionEntity auctionId;
 
     public int getId() {

@@ -31,6 +31,8 @@ public class AuctionRequest {
     private UserEntity owner_id;
     private int version;
 
+
+
     public String getImage1() {
         return image1;
     }

@@ -2,6 +2,7 @@ package pl.jaz.jazapp.services.category;
 
 import pl.jaz.jazapp.pojo.CategoryEntity;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Model
+@ApplicationScoped
 public class CategorySearchService {
     @PersistenceContext
     private EntityManager em;

@@ -1,8 +1,6 @@
 package pl.jaz.jazapp.services.user;
 
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.jaz.jazapp.pojo.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;

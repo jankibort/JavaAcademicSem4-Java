@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-@ApplicationScoped
 public class CategoryCreatorService {
     @PersistenceContext
     private EntityManager em;
