@@ -14,11 +14,13 @@ public class DepartmentCreatorService {
     private EntityManager em;
 
     @Transactional
-    public void createDepartment(String name) {
+    public void createDepartment(EditDepartmentRequest editDepartmentRequest) {
         DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setName(name);
-
-//        if(departmentEntity.getD)
-        em.persist(departmentEntity);
+        departmentEntity.setName(editDepartmentRequest.getName());
+        if (editDepartmentRequest.getDepartmentId() == departmentEntity.getDepartmentId() || editDepartmentRequest.getName().equals(departmentEntity.getName())) {
+            em.merge(departmentEntity);
+        } else {
+            em.persist(departmentEntity);
+        }
     }
 }

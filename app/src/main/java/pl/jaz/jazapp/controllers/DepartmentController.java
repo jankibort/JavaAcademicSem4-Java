@@ -8,6 +8,7 @@ import pl.jaz.jazapp.services.department.DepartmentCreatorService;
 import pl.jaz.jazapp.services.department.DepartmentSearchService;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import java.util.Optional;
 import static java.lang.Integer.parseInt;
 
 @Named
-@ApplicationScoped
+@RequestScoped
 public class DepartmentController {
     @Inject
     DepartmentCreatorService departmentCreator;
@@ -27,12 +28,13 @@ public class DepartmentController {
     DepartmentSearchService departmentSearch;
     @Inject
     EditDepartmentRequest editDepartmentRequest;
+    @Inject
+    HttpServletRequest params;
 
-
-    public EditDepartmentRequest editDepartmentRequest(HttpServletRequest req) {
+    public EditDepartmentRequest editDepartmentRequest() {
         if (editDepartmentRequest==null) {
-            if (req.getParameter("departmentId") != null) {
-                String departmentId = req.getParameter("departmentId");
+            if (params.getParameter("departmentId") != null) {
+                int departmentId = parseInt(params.getParameter("departmentId"));
                 DepartmentEntity departmentEntity = departmentSearch.getDepartmentById(departmentId).get();
                 editDepartmentRequest = new EditDepartmentRequest(departmentEntity);
             } else {
@@ -47,7 +49,7 @@ public class DepartmentController {
     }
 
     public String save(EditDepartmentRequest editDepartmentRequest) {
-        departmentCreator.createDepartment(editDepartmentRequest.getName());
+        departmentCreator.createDepartment(editDepartmentRequest);
         return "/departments/list.xhtml?faces-redirect=true";
     }
 
@@ -57,7 +59,7 @@ public class DepartmentController {
 
     public String add() { return "/app/departments/edit.xhtml"; }
 
-    public String edit(EditDepartmentRequest editDepartmentRequest) {
-        return "/app/departments/edit.xhtml?departmentId=" + editDepartmentRequest.getDepartmentId() + "&faces-redirect-true";
+    public String edit(int id) {
+        return "/app/departments/edit.xhtml?departmentId=" + id + "&faces-redirect-true";
     }
 }
