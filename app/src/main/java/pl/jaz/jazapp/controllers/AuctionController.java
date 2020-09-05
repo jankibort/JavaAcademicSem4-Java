@@ -33,11 +33,11 @@ public class AuctionController {
     UserSearchService userSearchService;
     @Inject
     UserContext userContext;
-    @Inject
-    ParameterSearchService parameterSearchService;
+//    @Inject
+//    ParameterSearchService parameterSearchService;
 
     public String goToCreateAuction() {
-        return "/app/auctions/edit.xhtml";
+        return "/app/auctions/edit.xhtml?faces-redirect=true";
     }
 
 //    public List<AuctionMerge> getAuctionList() {
@@ -66,10 +66,10 @@ public class AuctionController {
     }
 
     public String goToMyListing() {
-        return "/app/auctions/mine.xhtml";
+        return "/app/auctions/mine.xhtml?faces-redirect=true";
     }
 
     public String goToAuctionList() {
-        return "/app";
+        return "/app?faces-redirect=true";
     }
 }

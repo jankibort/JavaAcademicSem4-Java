@@ -16,7 +16,7 @@ public class UserCreatorService {
 
     @Transactional
     public void createUser(String username, String password) {
-        var userEntity = new UserEntity();
+        UserEntity userEntity = new UserEntity();
         userEntity.setUsername(username);
         userEntity.setPassword(password);
 

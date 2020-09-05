@@ -38,9 +38,9 @@
 
     <h:form style="width: 50%; margin: auto;" class="greeny m-2">
         <h:inputText id="title" required="true" styleClass="form-control d-block" a:placeholder="Name"
-                     value="#{departmentRequest.name}"/>
+                     value="#{editDepartmentRequest.name}"/>
         <h:commandButton styleClass="btn d-block btn-sm btn-outline-primary font-weight-bold shadow-lg" value="Save"
-                         action="#{departmentController.save(departmentRequest)}"/>
+                         action="#{departmentController.save(editDepartmentRequest)}"/>
     </h:form>
 </h:body>
 </html>

@@ -4,6 +4,7 @@ import pl.jaz.jazapp.pojo.CategoryEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Model;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;

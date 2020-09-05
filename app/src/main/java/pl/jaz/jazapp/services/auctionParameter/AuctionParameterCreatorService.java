@@ -19,11 +19,10 @@ public class AuctionParameterCreatorService {
     @Inject
     UserSearchService userSearchService;
 
-    @Transactional
-    public void addParameter(AuctionEntity auctionEntity, ParameterEntity parameterEntity) {
-        var auctionParameterEntity = new AuctionParameterEntity();
-        auctionParameterEntity.setAuctionId(auctionEntity.getAuctionId());
-        auctionParameterEntity.setParameterId(parameterEntity.getId());
-
-    }
+//    @Transactional
+//    public void addParameter(AuctionEntity auctionEntity, ParameterEntity parameterEntity) {
+//        AuctionParameterEntity auctionParameterEntity = new AuctionParameterEntity();
+//        auctionParameterEntity.setAuctionId(auctionEntity);
+//        auctionParameterEntity.setParameterId(parameterEntity);
+//    }
 }

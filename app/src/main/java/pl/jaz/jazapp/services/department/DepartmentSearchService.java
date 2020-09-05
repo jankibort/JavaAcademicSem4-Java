@@ -24,7 +24,7 @@ public class DepartmentSearchService {
     }
 
     @Transactional
-    public Optional<DepartmentEntity> findDepartmentById(String id) {
+    public Optional<DepartmentEntity> getDepartmentById(String id) {
         return em.createQuery("from DepartmentEntity where id = :id", DepartmentEntity.class)
                 .setParameter("id", id)
                 .getResultList().stream()

@@ -46,7 +46,7 @@
                           value="#{dep.name}"/>
             <c:if test="#{exampleFilter.getIsUserAnAdmin()}">
                 <h:outputLink styleClass="btn btn-sm btn-outline-warning shadow-lg"
-                              value="#{departmentController.edit(dep.departmentId)}">edit</h:outputLink>
+                              value="#{departmentController.edit(editDepartmentRequest)}">edit</h:outputLink>
             </c:if>
         </h:form>
     </ui:repeat>

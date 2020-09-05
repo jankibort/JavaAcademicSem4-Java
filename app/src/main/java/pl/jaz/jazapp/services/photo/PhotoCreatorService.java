@@ -18,7 +18,7 @@ public class PhotoCreatorService {
 
     @Transactional
     public void addPhoto(String url, AuctionEntity auctionId) {
-        var PhotoEntity = new PhotoEntity();
+        PhotoEntity PhotoEntity = new PhotoEntity();
         PhotoEntity.setUrl(url);
         PhotoEntity.setAuctionId(auctionId);
 

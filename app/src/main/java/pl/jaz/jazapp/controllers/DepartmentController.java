@@ -3,6 +3,7 @@ package pl.jaz.jazapp.controllers;
 import pl.jaz.jazapp.pojo.CategoryEntity;
 import pl.jaz.jazapp.pojo.DepartmentEntity;
 import pl.jaz.jazapp.requests.DepartmentRequest;
+import pl.jaz.jazapp.requests.EditDepartmentRequest;
 import pl.jaz.jazapp.services.department.DepartmentCreatorService;
 import pl.jaz.jazapp.services.department.DepartmentSearchService;
 
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import static java.lang.Integer.parseInt;
+
 @Named
 @ApplicationScoped
 public class DepartmentController {
@@ -22,19 +25,30 @@ public class DepartmentController {
     DepartmentCreatorService departmentCreator;
     @Inject
     DepartmentSearchService departmentSearch;
+    @Inject
+    EditDepartmentRequest editDepartmentRequest;
 
-    protected Optional<DepartmentEntity> getDepartmentById(HttpServletRequest req) throws IOException {
-        var departmentId = req.getParameter("departmentId");
-        return departmentSearch.findDepartmentById(departmentId);
+
+    public EditDepartmentRequest editDepartmentRequest(HttpServletRequest req) {
+        if (editDepartmentRequest==null) {
+            if (req.getParameter("departmentId") != null) {
+                String departmentId = req.getParameter("departmentId");
+                DepartmentEntity departmentEntity = departmentSearch.getDepartmentById(departmentId).get();
+                editDepartmentRequest = new EditDepartmentRequest(departmentEntity);
+            } else {
+                editDepartmentRequest = new EditDepartmentRequest();
+            }
+        }
+        return editDepartmentRequest;
     }
 
     public String goToDepartments() {
-        return "/app/departments/list.xhtml";
+        return "/app/departments/list.xhtml?faces-redirect=true";
     }
 
-    public String save(DepartmentRequest departmentRequest) {
-        departmentCreator.createDepartment(departmentRequest.getName());
-        return "/app/departments/list.xhtml";
+    public String save(EditDepartmentRequest editDepartmentRequest) {
+        departmentCreator.createDepartment(editDepartmentRequest.getName());
+        return "/departments/list.xhtml?faces-redirect=true";
     }
 
     public List<DepartmentEntity> getAllDepartments() {
@@ -43,7 +57,7 @@ public class DepartmentController {
 
     public String add() { return "/app/departments/edit.xhtml"; }
 
-    public String edit(int id) {
-        return "/app/departments/edit.xhtml?departmentId=" + id + "&faces-redirect-true";
+    public String edit(EditDepartmentRequest editDepartmentRequest) {
+        return "/app/departments/edit.xhtml?departmentId=" + editDepartmentRequest.getDepartmentId() + "&faces-redirect-true";
     }
 }

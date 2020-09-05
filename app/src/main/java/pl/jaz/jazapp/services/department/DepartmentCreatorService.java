@@ -1,6 +1,7 @@
 package pl.jaz.jazapp.services.department;
 
 import pl.jaz.jazapp.pojo.DepartmentEntity;
+import pl.jaz.jazapp.requests.EditDepartmentRequest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -14,9 +15,10 @@ public class DepartmentCreatorService {
 
     @Transactional
     public void createDepartment(String name) {
-        var departmentEntity = new DepartmentEntity();
+        DepartmentEntity departmentEntity = new DepartmentEntity();
         departmentEntity.setName(name);
 
+//        if(departmentEntity.getD)
         em.persist(departmentEntity);
     }
 }
